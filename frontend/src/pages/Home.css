@@ -1,0 +1,13 @@
+.rate-leaflet {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.rate {
+  height: 400px;
+}
+
+.leaflet {
+  height: 100%;
+}

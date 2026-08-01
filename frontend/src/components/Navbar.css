@@ -1,46 +1,89 @@
 .navbar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 7rem;
-  padding: 1rem 1rem 2.5rem;
+  padding: 14px 34px;
   box-sizing: border-box;
 
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10;
+  z-index: 600;
 
-  background-color: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid rgba(29, 31, 32, 0.16);
+  
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 
-.navbar-left {
-  margin-left: 3rem;
-}
-
-.navbar a {
-  color: inherit;
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1d1f20;
   text-decoration: none;
-  font-weight: 450;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: #00274c;
+  color: #ffcb05;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.navbar-word {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0.02em;
 }
 
 .navbar-inner {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .navbar-inner a {
-  padding: 0.6rem 1.1rem;
-  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 450;
+  color: #1d1f20;
+  text-decoration: none;
+  border-radius: 4px;
   transition: background-color 0.15s ease;
 }
 
 .navbar-inner a:hover {
-  background-color: #f0f0f0;
+  background-color: rgba(29, 31, 32, 0.07);
+}
+
+.navbar-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: #5980a6;
+  color: #f2f2f3;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 8px 14px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+  text-transform: uppercase;
+}
+
+.navbar-cta:hover {
+  background: #597ea3;
 }
