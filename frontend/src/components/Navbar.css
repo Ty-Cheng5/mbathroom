@@ -1,0 +1,46 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 7rem;
+  padding: 1rem 1rem 2.5rem;
+  box-sizing: border-box;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.navbar-left {
+  margin-left: 3rem;
+}
+
+.navbar a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 450;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-inner a {
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  transition: background-color 0.15s ease;
+}
+
+.navbar-inner a:hover {
+  background-color: #f0f0f0;
+}
