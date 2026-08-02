@@ -1,13 +1,151 @@
+/* Locks the page to the window height so the whole page can't scroll.
+   Only the reviews column scrolls, which keeps the map from moving. */
+.home-page {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Top row. Title on the left, sort buttons pushed to the right. */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 34px;
+}
+
+/* The small gray "NEAR YOU" text above the title. */
+.home-eyebrow {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(29, 31, 32, 0.55);
+  margin-bottom: 6px;
+}
+
+/* The big title text. */
+.home-title {
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+/* The search box. position: relative lets the magnifying glass sit on top of it. */
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 340px;
+}
+
+/* The magnifying glass, placed inside the left edge of the box.
+   pointer-events: none means clicking it still focuses the box underneath. */
+.search-icon {
+  position: absolute;
+  left: 10px;
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+  fill: none;
+  stroke: rgba(29, 31, 32, 0.5);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+/* The text box. The extra left padding leaves room for the icon. */
+.search-input {
+  width: 100%;
+  padding: 8px 12px 8px 32px;
+  font-family: "Barlow", system-ui, sans-serif;
+  font-size: 14px;
+  color: #1d1f20;
+  background: transparent;
+  border: 1px solid rgba(29, 31, 32, 0.16);
+  border-radius: 4px;
+}
+
+/* The gray hint text shown when the box is empty. */
+.search-input::placeholder {
+  color: rgba(29, 31, 32, 0.45);
+}
+
+/* Blue outline when clicked into, so it's clear which box you're typing in. */
+.search-input:focus {
+  outline: none;
+  border-color: #5980a6;
+}
+
+/* Chrome adds its own X button to search boxes. This hides it so the
+   box looks the same in every browser. */
+.search-input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+/* Holds the "SORT" label and the buttons next to each other. */
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* The small gray "SORT" text. */
+.sort-label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(29, 31, 32, 0.55);
+}
+
+/* Box around all three buttons, so they look like one connected group. */
+.sort-toggle {
+  display: flex;
+  border: 1px solid rgba(29, 31, 32, 0.16);
+}
+
+/* Each button. Plain with no background, plus a divider line on its left side. */
+.sort-btn {
+  cursor: pointer;
+  border: 0;
+  border-left: 1px solid rgba(29, 31, 32, 0.16);
+  padding: 6px 12px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  background: transparent;
+  color: #1d1f20;
+}
+
+/* The first button doesn't need that divider, since nothing is to its left. */
+.sort-btn:first-child {
+  border-left: 0;
+}
+
+/* The picked button turns blue. */
+.sort-btn-active {
+  background: #5980a6;
+  color: #f2f2f3;
+}
+
+/* Splits the area into two equal columns with a gap between them. */
 .rate-leaflet {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
+/* Left column. overflow-y makes it scroll on its own when there are too many reviews. */
 .rate {
-  height: 400px;
+  height: 600px;
+  overflow-y: auto;
 }
 
+/* Right column. 100% means it matches the height of the left column. */
 .leaflet {
   height: 100%;
 }

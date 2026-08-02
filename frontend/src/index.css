@@ -1,0 +1,14 @@
+/* Browsers add a margin around the page by default. Removing it stops the
+   window from being taller than the screen, which is what caused the
+   scrollbar on the right side. */
+body {
+  margin: 0;
+}
+
+/* Makes padding and borders count as part of an element's width instead of
+   getting added on top, so sizes like 100% and 100vh stay accurate. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
