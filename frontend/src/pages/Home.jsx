@@ -12,13 +12,21 @@ import L from 'leaflet';
 const SORT_OPTIONS = [
     ['distance', 'Distance'],
     ['rating', 'Rating'],
-    ['newest', 'Newest'],
+    ['favorite', 'Favorite'],
+];
+
+const GENDER_OPTIONS = [
+    ['all', 'All'],
+    ['men', 'Men'],
+    ['women', 'Women'],
+    ['ginc', 'Gender-Inclusive'],
+
 ];
 
 function Home() {
-    // Remembers which sort button is picked. Starts on "distance". Right now it only
-    // changes which button looks highlighted, since there's no list of bathrooms yet.
+    // Default option
     const [sort, setSort] = useState('distance');
+    const [gender, setGender] = useState('all');
 
     // Holds whatever is typed in the search box. Starts empty. Like the sort buttons,
     // it doesn't filter anything yet since there's no list of bathrooms to search.
@@ -27,8 +35,6 @@ function Home() {
     // Points at the empty div further down where the map gets drawn.
     const mapRef = useRef(null);
 
-    // The empty [] at the end means this only runs once, when the page first loads,
-    // so we don't build a new map every time the page redraws.
     useEffect(() => {
         const map = L.map(mapRef.current).setView([42.2808, -83.7430], 15); // lat, lng, zoom
 
@@ -47,10 +53,11 @@ function Home() {
         <div className="home-page">
             <Navbar/>
 
-            {/* Top row: title on the left, sort buttons on the right. */}
             <div className="filter-bar">
-                {/* Search bar. The magnifying glass is just a drawing, so clicks on it
-                    pass through to the box behind it and put the cursor in the box. */}
+                <div className="home-heading">
+                    <div className="home-eyebrow">Near you · Ann Arbor</div>
+                    <h1 className="home-title">Bathrooms Closest To You</h1>
+                </div>
                 <div className="search-bar">
                     <svg className="search-icon" viewBox="0 0 16 16" aria-hidden="true">
                         <circle cx="7" cy="7" r="5" />
@@ -66,8 +73,24 @@ function Home() {
                     />
                 </div>
 
-                {/* Sort buttons. Clicking one saves it with setSort, and the page
-                    redraws so that button turns blue. */}
+                <div className="sort-control">
+                    <span className="sort-label">Gender</span>
+                    <div className="sort-toggle">
+                        {GENDER_OPTIONS.map(([value, label]) => (
+                            <button
+                                key={value}
+                                type="button"
+                                // Compares against `gender`, not `sort`, so this row
+                                // highlights on its own.
+                                className={gender === value ? 'sort-btn sort-btn-active' : 'sort-btn'}
+                                onClick={() => setGender(value)}
+                            >
+                                {label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="sort-control">
                     <span className="sort-label">Sort</span>
                     <div className="sort-toggle">
@@ -86,15 +109,11 @@ function Home() {
                 </div>
             </div>
 
-            {/* Two columns: reviews on the left (empty for now), map on the right.
-                Home.css puts them side by side. */}
             <div className="rate-leaflet">
                 <div className="rate">
 
                 </div>
-                <div ref={mapRef} className="leaflet">
-
-                </div>
+                <div ref={mapRef} className="leaflet"></div>
 
             </div>
 

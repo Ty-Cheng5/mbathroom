@@ -10,7 +10,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 28px;
   padding: 14px 34px;
+}
+
+/* Holds the small gray line and the title stacked on top of each other.
+   flex: none stops it from being squished when the window gets narrow. */
+.home-heading {
+  flex: none;
 }
 
 /* The small gray "NEAR YOU" text above the title. */
@@ -34,7 +41,9 @@
   letter-spacing: -0.015em;
 }
 
-/* The search box. position: relative lets the magnifying glass sit on top of it. */
+/* The search box. position: relative lets the magnifying glass sit on top of it.
+   margin-right: auto soaks up all the leftover space on its right, which pulls the
+   search box left next to the title and pushes the sort buttons to the far right. */
 .search-bar {
   position: relative;
   display: flex;
@@ -76,7 +85,7 @@
 /* Blue outline when clicked into, so it's clear which box you're typing in. */
 .search-input:focus {
   outline: none;
-  border-color: #5980a6;
+  border-color: #00274C;
 }
 
 /* Chrome adds its own X button to search boxes. This hides it so the
@@ -128,7 +137,7 @@
 
 /* The picked button turns blue. */
 .sort-btn-active {
-  background: #5980a6;
+  background: #00274C;
   color: #f2f2f3;
 }
 
@@ -136,16 +145,20 @@
 .rate-leaflet {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 0px;
 }
 
 /* Left column. overflow-y makes it scroll on its own when there are too many reviews. */
 .rate {
-  height: 600px;
+  height: 710px;
   overflow-y: auto;
 }
 
 /* Right column. 100% means it matches the height of the left column. */
 .leaflet {
   height: 100%;
+}
+
+.filter-bar {
+  border-bottom: 1px solid rgba(29, 31, 32, 0.16);
 }

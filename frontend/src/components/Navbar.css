@@ -21,17 +21,41 @@
   display: flex;
   align-items: center;
   text-decoration: none;
+  gap: 10px;
+  /* Michigan navy, matching the outline of the Block M next to it. */
+  color: #00274c;
 }
 
-/* The logo image. Setting only the height and letting the width be automatic
-   keeps the picture from looking squished. display: block removes the small
-   gap browsers leave under images. */
+/* Links are blue by default, turn red while being clicked, and purple once
+   visited. These lines keep the color the same no matter what. */
+.navbar-brand:link,
+.navbar-brand:visited,
+.navbar-brand:hover,
+.navbar-brand:active {
+  color: #00274c;
+}
+
+/* The word "Bathroom" next to the Block M. Deliberately a different font from
+   the page headings so the logo reads as a brand mark instead of a title.
+   Montserrat is rounder and wider, which balances the blocky M. */
+.navbar-word {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  /* Slightly tightened spacing, which is typical for a logo. */
+  letter-spacing: -0.01em;
+  /* Nudges the text down a hair so its middle lines up with the M's middle. */
+  padding-top: 2px;
+}
+
+/* The restroom sign image. Setting only the height and letting the width be
+   automatic keeps the picture from looking squished. display: block removes the
+   small gap browsers leave under images. */
 .navbar-logo {
   display: block;
-  height: 52px;
+  height: 65px;
   width: auto;
-  /* Rounds off the square corners of the navy logo. */
-  border-radius: 10px;
 }
 
 .navbar-inner {
@@ -55,13 +79,17 @@
   background-color: rgba(29, 31, 32, 0.07);
 }
 
-.navbar-cta {
+/* The blue "Write a Review" link. It's written as .navbar-inner .navbar-cta so it
+   beats the plain ".navbar-inner a" rule above, which would otherwise repaint it
+   dark and resize the text. */
+.navbar-inner .navbar-cta {
   display: inline-flex;
+  text-decoration: none;
   align-items: center;
   gap: 6px;
   cursor: pointer;
   border: 1px solid transparent;
-  background: #5980a6;
+  background: #00274C;
   color: #f2f2f3;
   font-family: "Barlow Condensed", sans-serif;
   font-weight: 600;
@@ -73,6 +101,6 @@
   text-transform: uppercase;
 }
 
-.navbar-cta:hover {
-  background: #597ea3;
+.navbar-inner .navbar-cta:hover {
+  background: #00274C;
 }

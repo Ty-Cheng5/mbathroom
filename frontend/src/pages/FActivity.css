@@ -1,10 +1,10 @@
 /* Space around the page's content so it isn't flush against the edges. */
-.profile-page .page-body {
+.factivity-page .page-body {
   padding: 22px 34px;
 }
 
 /* Same big condensed title style used on the home page. */
-.profile-page .page-title {
+.factivity-page .page-title {
   margin: 0;
   font-family: "Barlow Condensed", sans-serif;
   font-weight: 600;

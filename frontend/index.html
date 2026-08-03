@@ -2,15 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- The ?v=2 on the end is a trick to beat caching. Browsers hold onto favicons
+         very stubbornly, so changing this number makes the browser treat it as a
+         brand new file and fetch it again. Bump it if the icon ever goes stale. -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Montserrat:wght@700&display=swap"
       rel="stylesheet"
     />
-    <title>M Bathroom</title>
+    <title>M-Bathroom: Rate your Bathrooms - Real Time Feedback</title>
   </head>
   <body>
     <div id="root"></div>
