@@ -23,10 +23,13 @@ const GENDER_OPTIONS = [
 
 ];
 
+
+
 function Home() {
     // Default option
     const [sort, setSort] = useState('distance');
     const [gender, setGender] = useState('all');
+    const [buildings, setBuildings] = useState([]);
 
     // Holds whatever is typed in the search box. Starts empty. Like the sort buttons,
     // it doesn't filter anything yet since there's no list of bathrooms to search.
@@ -47,6 +50,16 @@ function Home() {
 
         // Deletes the map when leaving the page.
         return () => map.remove();
+    }, []);
+
+    // Ask Django for the buildings once, when the page first loads.
+    // This has to be its own useEffect - putting it after the return above
+    // meant it never ran, because return exits the function immediately.
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_BASE}/api/buildings`)
+        .then((res) => res.json())
+        .then((data) => setBuildings(data.buildings))
+        .catch((err) => console.error('Could not reach the API:', err));
     }, []);
 
     return (
@@ -111,8 +124,16 @@ function Home() {
 
             <div className="rate-leaflet">
                 <div className="rate">
-
+                    {buildings.map((b) => (
+                        <div key={b.id} style={{ padding: '12px 0', borderBottom: '1px solid #ddd' }}>
+                            <strong>{b.name}</strong>
+                            <div style={{ fontSize: 13, color: '#666' }}>
+                                {b.street} · {b.num_bathrooms} bathrooms
+                            </div>
+                        </div>
+                    ))}
                 </div>
+                
                 <div ref={mapRef} className="leaflet"></div>
 
             </div>

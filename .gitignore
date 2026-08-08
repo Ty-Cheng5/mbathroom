@@ -1,0 +1,18 @@
+# Python virtual environment - rebuild it with:  pip install -r requirements.txt
+.venv/
+__pycache__/
+*.pyc
+
+# The local database file
+backend/db.sqlite3
+
+# Secrets: API keys, client secrets. Never commit these.
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+
+# OS junk
+.DS_Store

@@ -11,7 +11,11 @@
   z-index: 600;
 
   border-bottom: 1px solid rgba(29, 31, 32, 0.16);
-  
+
+  /* backdrop-filter blurs whatever is behind the bar, but it needs a
+     background to paint onto. Without one, the map smears through the bar
+     when it redraws. */
+  background-color: rgba(242, 242, 243, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }

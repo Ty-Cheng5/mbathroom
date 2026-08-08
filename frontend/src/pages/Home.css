@@ -3,6 +3,10 @@
 .home-page {
   height: 100vh;
   overflow: hidden;
+  /* Stacks the navbar, filter bar, and content area top to bottom so the
+     content area can be told to fill whatever height is left over. */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Top row. Title on the left, sort buttons pushed to the right. */
@@ -146,11 +150,17 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0px;
+  /* flex: 1 fills the height left after the navbar and filter bar.
+     min-height: 0 lets it shrink small enough for the list to scroll inside
+     it. Without that line a flex item refuses to get shorter than its
+     contents, and the page overflows again. */
+  flex: 1;
+  min-height: 0;
 }
 
 /* Left column. overflow-y makes it scroll on its own when there are too many reviews. */
 .rate {
-  height: 710px;
+  height: 100%;
   overflow-y: auto;
 }
 
